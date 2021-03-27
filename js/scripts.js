@@ -6,14 +6,15 @@ function changeColor () {
   this.style.backgroundColor= "rgb(" + color[randomColor] + ")";
 }
 
-function createGrid () {
-  let gridSize = prompt("Choose grid size 1-64")
-  for (let i = 0; i < gridSize; i++) {
+function createGrid (squareSize) {
+  
+  for (let i = 0; i < squareSize; i++) {
     let selectedClass = document.querySelector(".sketch_container");
     let createDiv = document.createElement("div");
     selectedClass.appendChild(createDiv);
     createDiv.classList = "Sketch-column";
-    for(let j = 0; j < gridSize; j++){
+
+    for(let j = 0; j < squareSize; j++){
       let createSquare = document.createElement("div");
       createDiv.appendChild(createSquare);
       createSquare.classList = "Sketch_square";
@@ -24,15 +25,15 @@ function createGrid () {
  
 function addButtonEventListeners (){
 let changeGridSize = document.querySelector("#changeSize");
-let clearButton = document.querySelector("#clearGrid")
+let clearButton = document.querySelector("#clearGrid");
 
-changeGridSize.addEventListener("click",ChangeGrid)
-clearButton.addEventListener("click",cleanColorGrid)
+changeGridSize.addEventListener("click",ChangeGrid);
+clearButton.addEventListener("click",cleanColorGrid);
 }
 
 function ChangeGrid () {
-  clearGrid()
-  createGrid()
+  clearGrid() 
+  createGrid(prompt("Choose grid size 1-64"))
 }
 
 function clearGrid (){
@@ -54,5 +55,5 @@ function cleanColorGrid(){
   })
 }
 
-createGrid()
+createGrid(prompt("Choose grid size 1-64"))
 addButtonEventListeners()
