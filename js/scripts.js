@@ -13,27 +13,15 @@ function createGrid () {
     let createDiv = document.createElement("div");
     selectedClass.appendChild(createDiv);
     createDiv.classList = "Sketch-column";
+    for(let j = 0; j < gridSize; j++){
+      let createSquare = document.createElement("div");
+      createDiv.appendChild(createSquare);
+      createSquare.classList = "Sketch_square";
+      createSquare.addEventListener("mouseover",changeColor)
+    }
   }
+}
  
-  for (let j = 0; j < gridSize; j++){
-    let targetDiv2 = document.querySelectorAll(".Sketch-column");
-
-    targetDiv2.forEach(data => {
-      let createDiv2 = document.createElement("div");
-      data.appendChild(createDiv2);
-      createDiv2.classList= "Sketch_square";
-    });
-  }
-}
-
-function addGridEventListeners () {
-  let columns = document.querySelectorAll(".Sketch_square");
-
-  columns.forEach(data => {
-    data.addEventListener("mouseover", changeColor)
-  });
-}
-
 function addButtonEventListeners (){
 let changeGridSize = document.querySelector("#changeSize");
 let clearButton = document.querySelector("#clearGrid")
@@ -45,7 +33,6 @@ clearButton.addEventListener("click",cleanColorGrid)
 function ChangeGrid () {
   clearGrid()
   createGrid()
-  addGridEventListeners()
 }
 
 function clearGrid (){
@@ -68,5 +55,4 @@ function cleanColorGrid(){
 }
 
 createGrid()
-addGridEventListeners()
 addButtonEventListeners()
